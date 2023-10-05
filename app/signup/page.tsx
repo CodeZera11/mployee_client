@@ -32,6 +32,7 @@ const SignupPage = () => {
                 name: "",
                 email: ""
             })
+            localStorage.setItem("userId", response.data.user.id)
             router.push("/create-post")
         } catch (error: any) {
             toast.error(error?.response?.data?.message)

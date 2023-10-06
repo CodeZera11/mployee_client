@@ -9,6 +9,12 @@ const CreatePostPage = () => {
 
     const router = useRouter();
 
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        router.push("/signup")
+    }
+
     const [data, setData] = useState({
         title: "",
         content: ""
@@ -43,7 +49,7 @@ const CreatePostPage = () => {
                 title: "",
                 content: ""
             })
-            
+
         } catch (error: any) {
             toast.error(error?.response?.data?.message)
         } finally {
@@ -52,7 +58,7 @@ const CreatePostPage = () => {
     }
 
     return (
-        <div className='h-screen flex items-center justify-center flex-col gap-10'>
+        <div className='h-screen flex items-center mt-10 flex-col gap-10'>
             <h1 className='text-4xl font-bold'>Create Post</h1>
             <form onSubmit={handleSubmit} className='flex flex-col gap-10  w-screen'>
                 <div className='flex flex-col gap-2 items-center justify-center'>

@@ -2,12 +2,21 @@
 import PostCard from "@/component/postcard"
 import axios from "axios"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export default function Home() {
 
+  const router = useRouter();
+
   const [posts, setPosts] = useState<any>([])
   const [loading, setLoading] = useState(false);
+
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    router.push("/signup")
+  }
 
   const fetchPosts = async () => {
     try {

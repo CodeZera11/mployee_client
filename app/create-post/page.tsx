@@ -50,6 +50,8 @@ const CreatePostPage = () => {
                 content: ""
             })
 
+            router.push(`/fetch-posts/${userId}`);
+
         } catch (error: any) {
             toast.error(error?.response?.data?.message)
         } finally {

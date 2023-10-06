@@ -33,6 +33,7 @@ const SignupPage = () => {
                 email: ""
             })
             localStorage.setItem("userId", response.data.user.id)
+            location.reload();
             router.push("/create-post")
         } catch (error: any) {
             toast.error(error?.response?.data?.message)
